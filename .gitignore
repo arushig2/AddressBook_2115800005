@@ -1,0 +1,20 @@
+# Visual Studio specific files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build artifacts
+bin/
+obj/
+out/
+debug/
+release/
+/obj/
+/bin/
+
+# Logs and generated files
+*.log
+logs/
+
