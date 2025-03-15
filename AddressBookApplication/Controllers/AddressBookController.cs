@@ -1,5 +1,6 @@
 using BusinessLayer.Interface;
 using Microsoft.AspNetCore.Mvc;
+using ModelLayer.Model;
 using RepositoryLayer.Entity;
 
 
@@ -25,7 +26,7 @@ namespace AddressBookApplication.Controllers
       
         [HttpPost]
 
-        public IActionResult AddContact()
+        public IActionResult AddContact(AddContactModel newContact)
         {
             throw new NotImplementedException();
         }
@@ -33,7 +34,7 @@ namespace AddressBookApplication.Controllers
        
         [HttpPut("{id}")]
 
-        public IActionResult UpdateContact()
+        public IActionResult UpdateContact(int id, UpdateContactModel updateContact)
         {
             throw new NotImplementedException();
         }
