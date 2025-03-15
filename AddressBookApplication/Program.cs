@@ -11,8 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddScoped<IAddressBL, AddressBL>();
-builder.Services.AddScoped<IAddressRL, AddressRL>();
 
 var connectionString = builder.Configuration.GetConnectionString("SqlConnection");
 
