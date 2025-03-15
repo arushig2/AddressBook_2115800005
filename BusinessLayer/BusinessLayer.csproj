@@ -11,9 +11,4 @@
     <ProjectReference Include="..\RepositoryLayer\RepositoryLayer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interface\" />
-    <Folder Include="Service\" />
-  </ItemGroup>
-
 </Project>
