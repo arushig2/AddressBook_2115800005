@@ -19,6 +19,11 @@ namespace AddressBookApplication.Controllers
             _rabitMQProducer = rabitMQProducer;
         }
 
+        /// <summary>
+        /// Register User
+        /// </summary>
+        /// <param name="registerModel"></param>
+        /// <returns>Register model</returns>
 
         [HttpPost("register")]
 
@@ -41,6 +46,11 @@ namespace AddressBookApplication.Controllers
             return BadRequest(response);
         }
 
+        /// <summary>
+        /// Login User
+        /// </summary>
+        /// <param name="loginModel"></param>
+        /// <returns>Session Token</returns>
         [HttpPost("login")]
         public IActionResult Login(LoginModel loginModel)
         {
@@ -61,6 +71,11 @@ namespace AddressBookApplication.Controllers
             return Unauthorized(response);
         }
 
+        /// <summary>
+        /// Forgot Password
+        /// </summary>
+        /// <param name="passwordModel"></param>
+        /// <returns>Reset Token</returns>
         [HttpPost("forgot-password")]
         public async Task<IActionResult> ForgotPassword(ForgetPasswordModel passwordModel)
         {
@@ -77,6 +92,12 @@ namespace AddressBookApplication.Controllers
             return BadRequest(response);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="token"></param>
+        /// <param name="resetModel"></param>
+        /// <returns>bool if password is reset</returns>
         [HttpPatch("reset-password")]
         public IActionResult ResetPassword([FromQuery] string token, ResetPasswordModel resetModel)
         {
