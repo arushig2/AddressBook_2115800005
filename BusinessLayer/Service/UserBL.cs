@@ -4,7 +4,6 @@ using ModelLayer.Model;
 using RepositoryLayer.Token;
 using System.Security.Claims;
 
-
 namespace BusinessLayer.Service
 {
     public class UserBL : IUserBL
@@ -35,6 +34,17 @@ namespace BusinessLayer.Service
         public string LoginUser(LoginModel userLoginDto)
         {
             return _userRl.LoginUser(userLoginDto);
+        }
+
+        public Task<string> ForgetPassword(string email)
+        {
+            return _userRl.ForgetPassword(email);
+        }
+        public bool ResetPassword(string newPassword, string token)
+        {
+            var principal = _jwtToken.GetTokenValidation(token);
+            var userId = Convert.ToInt32(principal.FindFirstValue("UserId"));
+            return _userRl.ResetPassword(newPassword, userId);
         }
 
     }

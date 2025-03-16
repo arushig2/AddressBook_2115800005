@@ -12,6 +12,8 @@ namespace BusinessLayer.Interface
     {
         public UserDto RegisterUser(RegistrationModel userRegistration);
         public string LoginUser(LoginModel userLoginDto);
-      
+        public Task<string> ForgetPassword(string email);
+        public bool ResetPassword(string newPassword, string token);
+
     }
 }

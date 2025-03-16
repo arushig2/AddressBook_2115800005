@@ -19,6 +19,7 @@ builder.Services.AddScoped<HashPassword>();
 builder.Services.AddScoped<JwtToken>();
 builder.Services.AddScoped<IUserBL, UserBL>();
 builder.Services.AddScoped<IUserRL, UserRL>();
+builder.Services.AddScoped<EmailService>();
 
 var connectionString = builder.Configuration.GetConnectionString("SqlConnection");
 
