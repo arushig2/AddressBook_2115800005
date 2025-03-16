@@ -1,5 +1,4 @@
 ﻿using AddressBookApplication.RabitMQ.Interface;
-using AddressBookApplication.RabitMQ.Interface;
 using Microsoft.AspNetCore.Connections;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -8,7 +7,7 @@ using RabbitMQ.Client;
 using System;
 using System.Text;
 
-namespace FundooAPI.RabitMQ.Service
+namespace AddressBookApplication.RabitMQ.Service
 {
     public class PublishSubscribeMQProducer : IPublishSubscribeMQProducer
     {

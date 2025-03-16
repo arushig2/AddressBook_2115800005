@@ -8,7 +8,7 @@ using RepositoryLayer.Hashing;
 using RepositoryLayer.Token;
 using StackExchange.Redis;
 using AddressBookApplication.RabitMQ.Interface;
-using FundooAPI.RabitMQ.Service;
+using AddressBookApplication.RabitMQ.Service;
 
 
 var builder = WebApplication.CreateBuilder(args);
