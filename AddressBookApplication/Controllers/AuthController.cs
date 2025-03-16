@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using BusinessLayer.Interface;
 using ModelLayer.Model;
+using AddressBookApplication.RabitMQ.Interface;
 
 namespace AddressBookApplication.Controllers
 {
@@ -9,11 +10,13 @@ namespace AddressBookApplication.Controllers
     public class AuthController : Controller
     {
         private readonly IUserBL _userBL;
-      
+        private readonly IPublishSubscribeMQProducer _rabitMQProducer;
 
-        public AuthController(IUserBL userBL)
+
+        public AuthController(IUserBL userBL, IPublishSubscribeMQProducer rabitMQProducer)
         {
             _userBL = userBL;
+            _rabitMQProducer = rabitMQProducer;
         }
 
 
@@ -27,6 +30,7 @@ namespace AddressBookApplication.Controllers
 
             if (result != null)
             {
+                _rabitMQProducer.Publish(result);
                 response.Success = true;
                 response.Message = "User Registered successfully";
                 response.Data = result;
@@ -45,6 +49,7 @@ namespace AddressBookApplication.Controllers
             var response = new ResponseModel<string>();
             if (user != null)
             {
+                _rabitMQProducer.Publish("User Login successful");
                 response.Success = true;
                 response.Message = "Login successful";
                 response.Data = user;
@@ -80,7 +85,7 @@ namespace AddressBookApplication.Controllers
             var response = new ResponseModel<bool>();
             if (result)
             {
-
+                _rabitMQProducer.Publish("Password reset successful");
                 response.Success = true;
                 response.Message = "Password reset successful";
                 response.Data = result;

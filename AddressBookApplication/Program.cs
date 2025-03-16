@@ -7,6 +7,8 @@ using BusinessLayer.Service;
 using RepositoryLayer.Hashing;
 using RepositoryLayer.Token;
 using StackExchange.Redis;
+using AddressBookApplication.RabitMQ.Interface;
+using FundooAPI.RabitMQ.Service;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +32,7 @@ builder.Services.AddDbContext<AddressBookContext>(options => options.UseSqlServe
 var redisConnectionString = builder.Configuration["Redis:ConnectionString"];
 builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
 
+builder.Services.AddScoped<IPublishSubscribeMQProducer, PublishSubscribeMQProducer>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
