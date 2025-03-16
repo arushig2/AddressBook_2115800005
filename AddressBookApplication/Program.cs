@@ -4,6 +4,8 @@ using RepositoryLayer.Interface;
 using RepositoryLayer.Service;
 using BusinessLayer.Interface;
 using BusinessLayer.Service;
+using RepositoryLayer.Hashing;
+using RepositoryLayer.Token;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,10 @@ builder.Services.AddControllers();
 
 builder.Services.AddScoped<IAddressBL, AddressBL>();
 builder.Services.AddScoped<IAddressRL, AddressRL>();
+builder.Services.AddScoped<HashPassword>();
+builder.Services.AddScoped<JwtToken>();
+builder.Services.AddScoped<IUserBL, UserBL>();
+builder.Services.AddScoped<IUserRL, UserRL>();
 
 var connectionString = builder.Configuration.GetConnectionString("SqlConnection");
 

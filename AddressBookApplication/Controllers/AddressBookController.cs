@@ -1,4 +1,5 @@
 using BusinessLayer.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ModelLayer.Model;
 using RepositoryLayer.Entity;
@@ -115,7 +116,6 @@ namespace AddressBookApplication.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>bool</returns>
-
         [HttpDelete("{id}")]
 
         public IActionResult DeleteContact(int id)
